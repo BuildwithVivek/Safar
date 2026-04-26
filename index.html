@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safar — Travel smarter across India</title>
+  <meta name="description" content="Tell us where you need to go. We'll find the best trains, flights, buses — and fill the gaps nobody else does. Free trip planning on WhatsApp." />
+  <meta property="og:title" content="Safar — Travel smarter across India" />
+  <meta property="og:description" content="One message on WhatsApp. We plan your whole trip — trains, flights, buses, and the last-mile gaps nobody else solves." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#1B2B5E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ── reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── tokens ── */
+    :root {
+      --navy:        #1B2B5E;
+      --navy-deep:   #0F1A3A;
+      --navy-mid:    #2A3F7A;
+      --cream:       #FAF6EE;
+      --cream-dark:  #F0EAD8;
+      --saffron:     #D4521A;
+      --saffron-mid: #E8824A;
+      --saffron-pale:#FDF0E8;
+      --gold:        #C89A2E;
+      --gold-pale:   #FBF5E0;
+      --ink:         #1a1814;
+      --muted:       #6B6560;
+      --border:      rgba(27,43,94,0.12);
+      --white:       #ffffff;
+      --r-sm:        8px;
+      --r-md:        12px;
+      --r-lg:        18px;
+      --r-xl:        24px;
+    }
+
+    /* ── base ── */
+    body {
+      font-family: 'Sora', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 26px;
+      font-weight: 300;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+    .logo span { color: var(--saffron); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--navy);
+      color: var(--white);
+      padding: 9px 20px;
+      border-radius: var(--r-sm);
+      font-size: 13px; font-weight: 500;
+      text-decoration: none;
+      transition: background 0.18s;
+    }
+    .nav-cta:hover { background: var(--navy-mid); }
+    .nav-cta svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    /* ── hero ── */
+    .hero {
+      padding: 80px 5vw 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-pale);
+      border: 1px solid rgba(200,154,46,0.35);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 11px; font-weight: 500;
+      color: #8A6A10;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--navy-deep);
+      margin-bottom: 18px;
+      letter-spacing: -1px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--saffron);
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 32px;
+      max-width: 420px;
+    }
+    .cta-group { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--saffron);
+      color: var(--white);
+      padding: 13px 24px;
+      border-radius: var(--r-md);
+      font-size: 15px; font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.18s, transform 0.12s;
+    }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-primary svg { width: 18px; height: 18px; fill: white; flex-shrink: 0; }
+    .btn-ghost {
+      font-size: 13px; color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      cursor: pointer;
+      background: none; border: none; font-family: inherit;
+    }
+    .btn-ghost:hover { color: var(--navy); }
+
+    /* ── demo card ── */
+    .demo-wrap {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 24px;
+      box-shadow: 0 2px 0 var(--cream-dark);
+    }
+    .demo-label {
+      font-size: 11px; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.07em;
+      margin-bottom: 12px;
+    }
+    .demo-route-row {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 16px;
+    }
+    .demo-city { font-size: 17px; font-weight: 500; color: var(--navy-deep); }
+    .demo-arr { color: var(--muted); font-size: 14px; }
+    .route-options { display: flex; flex-direction: column; gap: 8px; }
+    .r-card {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 14px;
+      border-radius: var(--r-md);
+      border: 1px solid var(--border);
+      background: var(--cream);
+      transition: border-color 0.15s;
+    }
+    .r-card.featured {
+      border-color: rgba(212,82,26,0.4);
+      background: var(--saffron-pale);
+    }
+    .r-icon {
+      width: 36px; height: 36px; border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; flex-shrink: 0;
+    }
+    .r-icon.t { background: #EEF2FF; }
+    .r-icon.f { background: #F0FDF4; }
+    .r-icon.v { background: var(--saffron-pale); }
+    .r-info { flex: 1; }
+    .r-name { font-size: 13px; font-weight: 500; color: var(--ink); }
+    .r-sub  { font-size: 11px; color: var(--muted); margin-top: 1px; }
+    .r-price { font-size: 15px; font-weight: 500; color: var(--saffron); white-space: nowrap; }
+    .r-badge {
+      font-size: 10px; padding: 2px 8px; border-radius: 20px;
+      background: #E6F4EC; color: #1a6b3c;
+      font-weight: 500; margin-top: 3px; display: inline-block;
+    }
+
+    /* ── divider ── */
+    .divider {
+      max-width: 1100px; margin: 0 auto;
+      border: none; border-top: 1px solid var(--border);
+    }
+
+    /* ── how it works ── */
+    .section {
+      padding: 72px 5vw;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 500; color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .step h3 {
+      font-size: 16px; font-weight: 500;
+      color: var(--navy-deep);
+      margin-bottom: 8px;
+    }
+    .step p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* ── vision ── */
+    .vision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .v-card {
+      padding: 22px 24px;
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+    .v-card.dark {
+      background: var(--navy-deep);
+      border-color: var(--navy-deep);
+    }
+    .v-icon { font-size: 22px; margin-bottom: 12px; display: block; }
+    .v-card h3 { font-size: 15px; font-weight: 500; color: var(--navy-deep); margin-bottom: 6px; }
+    .v-card.dark h3 { color: var(--cream); }
+    .v-card p  { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .v-card.dark p { color: rgba(250,246,238,0.5); }
+
+    /* ── cta block ── */
+    .cta-block {
+      background: var(--navy-deep);
+      padding: 80px 5vw;
+      text-align: center;
+    }
+    .cta-inner { max-width: 520px; margin: 0 auto; }
+    .cta-block h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 3vw, 38px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .cta-block p { font-size: 15px; color: rgba(250,246,238,0.55); margin-bottom: 32px; line-height: 1.7; }
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--white);
+      color: var(--navy-deep);
+      padding: 15px 30px;
+      border-radius: var(--r-md);
+      font-size: 15px; font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.18s;
+    }
+    .wa-btn:hover { opacity: 0.92; }
+    .wa-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .nudge { font-size: 12px; color: rgba(250,246,238,0.35); margin-top: 16px; }
+
+    /* ── footer ── */
+    footer {
+      background: var(--navy-deep);
+      border-top: 1px solid rgba(250,246,238,0.08);
+      padding: 24px 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 20px; font-weight: 300;
+      color: var(--cream);
+      text-decoration: none;
+    }
+    .footer-note { font-size: 12px; color: rgba(250,246,238,0.35); }
+
+    /* ── animations ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── mobile ── */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 48px 5vw 40px;
+        gap: 36px;
+      }
+      .steps { grid-template-columns: 1fr; gap: 28px; }
+      .vision-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 4vw; }
+      .section { padding: 48px 4vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="logo" href="/">सफ़र <span>·</span> Safar</a>
+    <a class="nav-cta" href="https://wa.me/919999999999?text=Hi%2C%20I%20want%20help%20planning%20my%20trip" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Plan my trip free
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="eyebrow fade-up">
+        <div class="eyebrow-dot"></div>
+        Free during beta
+      </div>
+      <h1 class="fade-up" style="transition-delay:0.08s">
+        Every journey,<br>
+        planned <em>honestly.</em>
+      </h1>
+      <p class="hero-sub fade-up" style="transition-delay:0.16s">
+        Trains, flights, buses — and the last-mile gaps nobody else solves.
+        Message us once. We send you the best plan for your budget.
+      </p>
+      <div class="cta-group fade-up" style="transition-delay:0.24s">
+        <a class="btn-primary" href="https://wa.me/919999999999?text=Hi%2C%20I%20want%20help%20planning%20my%20trip" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <button class="btn-ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">
+          See how it works
+        </button>
+      </div>
+    </div>
+
+    <div class="demo-wrap fade-up" style="transition-delay:0.1s">
+      <div class="demo-label">Your trip, planned in minutes</div>
+      <div class="demo-route-row">
+        <span class="demo-city">Nagpur</span>
+        <span class="demo-arr">→</span>
+        <span class="demo-city">Mumbai</span>
+      </div>
+      <div class="route-options">
+        <div class="r-card">
+          <div class="r-icon f">✈</div>
+          <div class="r-info">
+            <div class="r-name">Direct flight</div>
+            <div class="r-sub">1h 20m · IndiGo · Dr. Babasaheb Ambedkar Airport</div>
+          </div>
+          <div style="text-align:right">
+            <div class="r-price">₹4,200</div>
+          </div>
+        </div>
+        <div class="r-card featured">
+          <div class="r-icon t">🚂</div>
+          <div class="r-info">
+            <div class="r-name">Vidarbha Express</div>
+            <div class="r-sub">13h · AC 3 Tier · Departs 6:00 AM</div>
+          </div>
+          <div style="text-align:right">
+            <div class="r-price">₹620</div>
+            <div class="r-badge">Best value</div>
+          </div>
+        </div>
+        <div class="r-card">
+          <div class="r-icon v">🚐</div>
+          <div class="r-info">
+            <div class="r-name">Shared van → Wardha → Train</div>
+            <div class="r-sub">We arrange pickup from your town on fixed days</div>
+          </div>
+          <div style="text-align:right">
+            <div class="r-price">₹780</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="section-label">How it works</div>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h3>Tell us your trip</h3>
+        <p>Message us on WhatsApp — where you're going, when, and your budget. No app to download, no signup.</p>
+      </div>
+      <div class="step fade-up" style="transition-delay:0.1s">
+        <div class="step-num">2</div>
+        <h3>We plan every leg</h3>
+        <p>We research trains, flights, buses and the last-mile gaps — and send you the clearest, most honest plan.</p>
+      </div>
+      <div class="step fade-up" style="transition-delay:0.2s">
+        <div class="step-num">3</div>
+        <h3>You travel smarter</h3>
+        <p>Get exact costs, booking links, and tips. Keep more money in your pocket, spend less time juggling apps.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- VISION -->
+  <section class="section" id="vision">
+    <div class="section-label">Where we're going</div>
+    <div class="vision-grid">
+      <div class="v-card fade-up">
+        <span class="v-icon">🗺️</span>
+        <h3>Honest comparison, every time</h3>
+        <p>All options — price, time, comfort, CO₂ — in one place. We never push what's most expensive or what earns us a commission.</p>
+      </div>
+      <div class="v-card fade-up" style="transition-delay:0.1s">
+        <span class="v-icon">🚐</span>
+        <h3>Last-mile, solved</h3>
+        <p>Nearest airport 100km away with no public transport? We're building shared vans from Tier 2 and 3 towns on scheduled days.</p>
+      </div>
+      <div class="v-card dark fade-up" style="transition-delay:0.15s">
+        <span class="v-icon">🤝</span>
+        <h3>Partnering with operators</h3>
+        <p>Where demand exists but supply doesn't, we'll start routes — buses, trains, shared rides. We're in this for the journey, not just the app.</p>
+      </div>
+      <div class="v-card fade-up" style="transition-delay:0.2s">
+        <span class="v-icon">📉</span>
+        <h3>Budget as a promise</h3>
+        <p>Not a marketing label. We always show you the cheapest real option — even if it's not through us.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BLOCK -->
+  <section class="cta-block">
+    <div class="cta-inner">
+      <h2>Tell us where you need to go.</h2>
+      <p>We'll figure out the best way to get you there — trains, buses, flights, and whatever fills the gaps. Free during beta.</p>
+      <a class="wa-btn" href="https://wa.me/919999999999?text=Hi%2C%20I%20want%20help%20planning%20my%20trip" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Message us on WhatsApp
+      </a>
+      <p class="nudge">Usually replies within a few hours &nbsp;·&nbsp; No signups &nbsp;·&nbsp; 100% free</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="footer-logo" href="/">Safar</a>
+    <span class="footer-note">Made for Indian travellers &nbsp;·&nbsp; 2025</span>
+  </footer>
+
+  <script>
+    // fade-up on scroll
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
