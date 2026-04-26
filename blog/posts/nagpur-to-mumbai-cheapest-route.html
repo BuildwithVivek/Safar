@@ -1,1 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nagpur to Mumbai: the ₹620 option MakeMyTrip won't show you first — Safar</title>
+  <meta name="description" content="We compared 6 ways to travel from Nagpur to Mumbai. The Vidarbha Express AC 3-Tier costs ₹620 and gets you there by morning — ₹3,600 cheaper than flying." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1B2B5E; --navy-deep: #0F1A3A; --navy-mid: #2A3F7A;
+      --cream: #FAF6EE; --cream-dark: #F0EAD8;
+      --saffron: #D4521A; --saffron-pale: #FDF0E8; --saffron-mid: #E8824A;
+      --gold: #C89A2E; --gold-pale: #FBF5E0;
+      --ink: #1a1814; --muted: #6B6560; --border: rgba(27,43,94,0.12);
+      --white: #ffffff;
+    }
+    body { font-family: 'Sora', sans-serif; background: var(--cream); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--cream); border-bottom: 1px solid var(--border);
+      padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .logo { font-family: 'Fraunces', serif; font-style: italic; font-size: 26px; font-weight: 300; color: var(--navy); text-decoration: none; }
+    .logo span { color: var(--saffron); }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-link { font-size: 13px; color: var(--muted); text-decoration: none; }
+    .nav-link:hover { color: var(--ink); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--navy); color: var(--white);
+      padding: 9px 20px; border-radius: 8px;
+      font-size: 13px; font-weight: 500; text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--navy-mid); }
+
+    /* article layout */
+    .article { max-width: 680px; margin: 0 auto; padding: 52px 5vw 80px; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--muted); text-decoration: none; margin-bottom: 36px;
+    }
+    .back-link:hover { color: var(--navy); }
+
+    .article-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+    .post-tag {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 3px 10px; border-radius: 20px;
+    }
+    .tag-finding { background: #EEF9F4; color: #1a6b3c; }
+    .article-date { font-size: 12px; color: var(--muted); }
+    .read-time { font-size: 12px; color: var(--muted); }
+
+    .article h1 {
+      font-family: 'Fraunces', serif; font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 300; line-height: 1.2; color: var(--navy-deep);
+      letter-spacing: -0.3px; margin-bottom: 20px;
+    }
+    .article h1 em { font-style: italic; color: var(--saffron); }
+
+    .article-lede {
+      font-size: 17px; color: var(--muted); line-height: 1.75;
+      border-left: 3px solid var(--saffron); padding-left: 18px;
+      margin-bottom: 40px;
+    }
+
+    /* prose */
+    .prose { font-size: 15px; line-height: 1.85; color: var(--ink); }
+    .prose p { margin-bottom: 22px; }
+    .prose h2 {
+      font-size: 19px; font-weight: 500; color: var(--navy-deep);
+      margin: 40px 0 14px;
+    }
+    .prose h3 { font-size: 16px; font-weight: 500; color: var(--navy-deep); margin: 28px 0 10px; }
+    .prose strong { font-weight: 500; }
+    .prose a { color: var(--saffron); text-underline-offset: 3px; }
+
+    /* comparison table */
+    .route-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 13px; }
+    .route-table th {
+      text-align: left; padding: 10px 14px;
+      background: var(--navy-deep); color: var(--cream);
+      font-weight: 500; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .route-table th:first-child { border-radius: 8px 0 0 0; }
+    .route-table th:last-child  { border-radius: 0 8px 0 0; }
+    .route-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .route-table tr:last-child td { border-bottom: none; }
+    .route-table tr.winner td { background: var(--saffron-pale); }
+    .route-table tr:hover td { background: var(--cream-dark); }
+    .route-table tr.winner:hover td { background: #FAE4D5; }
+    .winner-badge {
+      display: inline-block; font-size: 10px; font-weight: 500;
+      background: #1a6b3c; color: #fff;
+      padding: 2px 8px; border-radius: 20px; margin-left: 6px;
+    }
+    .price-cell { font-weight: 500; color: var(--saffron); }
+
+    /* callout */
+    .callout {
+      background: var(--gold-pale); border: 1px solid rgba(200,154,46,0.3);
+      border-radius: 12px; padding: 20px 22px; margin: 32px 0;
+    }
+    .callout-label { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #8A6A10; margin-bottom: 8px; }
+    .callout p { font-size: 14px; color: #5C4510; line-height: 1.7; margin: 0; }
+
+    /* bottom CTA */
+    .post-cta {
+      margin-top: 52px; background: var(--navy-deep);
+      border-radius: 16px; padding: 32px 28px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    }
+    .post-cta h3 { font-family: 'Fraunces', serif; font-style: italic; font-size: 20px; font-weight: 300; color: var(--cream); }
+    .post-cta p { font-size: 13px; color: rgba(250,246,238,0.5); margin-top: 4px; }
+    .wa-btn-sm {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--navy-deep);
+      padding: 11px 22px; border-radius: 10px;
+      font-size: 14px; font-weight: 500; text-decoration: none; white-space: nowrap; flex-shrink: 0;
+    }
+    .wa-btn-sm svg { width: 16px; height: 16px; }
+
+    footer {
+      background: var(--navy-deep); border-top: 1px solid rgba(250,246,238,0.08);
+      padding: 24px 5vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-logo { font-family: 'Fraunces', serif; font-style: italic; font-size: 20px; font-weight: 300; color: var(--cream); text-decoration: none; }
+    .footer-note { font-size: 12px; color: rgba(250,246,238,0.35); }
+
+    @media (max-width: 640px) {
+      .post-cta { flex-direction: column; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="/">सफ़र <span>·</span> Safar</a>
+    <div class="nav-links">
+      <a class="nav-link" href="/blog">Journal</a>
+      <a class="nav-cta" href="https://wa.me/916204866785?text=Hi%2C%20I%20want%20help%20planning%20my%20trip" target="_blank" rel="noopener">Plan my trip free</a>
+    </div>
+  </nav>
+
+  <article class="article">
+
+    <a class="back-link" href="/blog">← Back to Journal</a>
+
+    <div class="article-meta">
+      <span class="post-tag tag-finding">Route finding</span>
+      <span class="article-date">24 Apr 2025</span>
+      <span class="read-time">· 4 min read</span>
+    </div>
+
+    <h1>Nagpur to Mumbai: the <em>₹620 option</em> MakeMyTrip won't show you first</h1>
+
+    <p class="article-lede">
+      We compared every realistic way to travel this route. The cheapest flight costs ₹4,200. The Vidarbha Express AC 3-Tier costs ₹620 and gets you to Mumbai by morning. Here's the full breakdown.
+    </p>
+
+    <div class="prose">
+
+      <p>This route came up in our first week of taking WhatsApp queries. A college student in Nagpur wanted to visit family in Mumbai over a long weekend. He'd already checked MakeMyTrip — the first results were flights starting at ₹3,800. He messaged us asking if there was a cheaper way.</p>
+
+      <p>There was. Six of them, actually.</p>
+
+      <h2>All 6 options, compared honestly</h2>
+
+      <table class="route-table">
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Duration</th>
+            <th>Price (approx)</th>
+            <th>Departs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>IndiGo / Air India (direct flight)</td>
+            <td>1h 20m</td>
+            <td class="price-cell">₹3,800–₹5,500</td>
+            <td>Multiple</td>
+          </tr>
+          <tr>
+            <td>Spicejet / Akasa (flight, advance booking)</td>
+            <td>1h 20m</td>
+            <td class="price-cell">₹2,200–₹3,500</td>
+            <td>If booked 3+ weeks out</td>
+          </tr>
+          <tr class="winner">
+            <td>Vidarbha Express — AC 3 Tier <span class="winner-badge">Best value</span></td>
+            <td>13h 45m</td>
+            <td class="price-cell">₹620</td>
+            <td>6:10 AM, arrives 7:55 PM</td>
+          </tr>
+          <tr>
+            <td>Sewagram Express — Sleeper class</td>
+            <td>14h 30m</td>
+            <td class="price-cell">₹280</td>
+            <td>If budget is the only factor</td>
+          </tr>
+          <tr>
+            <td>Volvo AC bus (redBus operators)</td>
+            <td>13–15h</td>
+            <td class="price-cell">₹900–₹1,400</td>
+            <td>Overnight, multiple operators</td>
+          </tr>
+          <tr>
+            <td>Shared cab to Wardha + Duronto Express</td>
+            <td>12h total</td>
+            <td class="price-cell">₹850</td>
+            <td>If you're near Wardha</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Why we recommend the Vidarbha Express</h2>
+
+      <p>The AC 3 Tier on this train is genuinely comfortable — individual berths, charging points, blanket included. You board in the evening, sleep, and wake up in Mumbai. No hotel night needed. That alone saves most people ₹800–₹1,500 compared to arriving the day before a flight.</p>
+
+      <p>The Sewagram Sleeper at ₹280 is real and valid if your budget is very tight. It's less comfortable but it works — and ₹280 for a journey of this distance is remarkable. We're not going to hide it just because the AC option earns us more (it earns us nothing — neither does).</p>
+
+      <h2>When the flight actually makes sense</h2>
+
+      <p>If you book a flight 3–4 weeks in advance, Spicejet and Akasa regularly show ₹2,200–₹2,500. At that price, with the time saved, it becomes a reasonable call — especially if you're travelling for work and need to arrive fresh. Last-minute flights at ₹4,500+ almost never make sense on this route.</p>
+
+      <div class="callout">
+        <div class="callout-label">Our honest take</div>
+        <p>For most students and young professionals on this route: Vidarbha Express AC 3-Tier is the answer. Book on IRCTC directly (train number 12105). If tatkal quota is open, the surcharge is around ₹200 extra — still far cheaper than flying.</p>
+      </div>
+
+      <h2>The last-mile gap we noticed</h2>
+
+      <p>Several people who messaged us about this route were actually from smaller towns near Nagpur — Wardha, Amravati, Yavatmal — where getting to Nagpur railway station itself is a hassle. This is the gap no app solves. We're actively working on a shared pickup solution for this corridor. If you're from one of these towns, message us — we want to understand this better before we build it.</p>
+
+    </div>
+
+    <div class="post-cta">
+      <div>
+        <h3>Need a route researched like this?</h3>
+        <p>Message us your trip — we'll find the best option and explain why.</p>
+      </div>
+      <a class="wa-btn-sm" href="https://wa.me/916204866785?text=Hi%2C%20I%20want%20help%20planning%20my%20trip" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.467-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Message us on WhatsApp
+      </a>
+    </div>
+
+  </article>
+
+  <footer>
+    <a class="footer-logo" href="/">Safar</a>
+    <span class="footer-note">Made for Indian travellers · 2025</span>
+  </footer>
+
+</body>
+</html>
 
